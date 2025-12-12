@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AYZ MOTORS - Ödeme</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .header {
+        background: #ffffff;
+        padding: 15px 30px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 900px;
+        background: #fff;
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .section {
+        margin-bottom: 25px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        background: #1173d4;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #0d5bb0;
+    }
+
+    .summary {
+        background: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 25px;
+    }
+
+    .summary p {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        margin: 8px 0;
+        font-weight: bold;
+    }
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <a href="sayfa2.html">AYZ MOTORS</a>
+
+    <div>
+        <a href="sayfa4.html" style="margin-right:20px;">Sepetim</a>
+        <a href="sayfa3.html">Hesabım</a>
+    </div>
+</div>
+
+
+
+
+<!-- PAYMENT AREA -->
+<div class="container">
+
+    <h2>Ödeme Bilgileri</h2>
+
+    <!-- TESLİMAT -->
+    <div class="section">
+        <h3>Teslimat Bilgisi</h3>
+
+        <input type="text" placeholder="Ad Soyad">
+        <input type="text" placeholder="Telefon Numarası">
+        <input type="text" placeholder="Adres (Mahalle, Cadde, No)">
+        <input type="text" placeholder="İl / İlçe">
+    </div>
+
+    <!-- KART BİLGİLERİ -->
+    <div class="section">
+        <h3>Kredi Kartı Bilgisi</h3>
+
+        <input type="text" placeholder="Kart Üzerindeki İsim">
+
+        <input type="text" placeholder="Kart Numarası">
+
+        <div style="display:flex; gap:20px;">
+            <input style="flex:1;" type="text" placeholder="SKT (AA/YY)">
+            <input style="flex:1;" type="password" placeholder="CVV">
+        </div>
+
+    </div>
+
+    <!-- SİPARİŞ ÖZETİ -->
+    <div class="summary">
+        <p><span>Ara Toplam</span> <span>2.150 TL</span></p>
+        <p><span>Kargo</span> <span>Ücretsiz</span></p>
+        <p style="font-size:17px; margin-top:15px; border-top:1px solid #ddd; padding-top:10px;">
+            <span>Toplam</span> <span>2.150 TL</span>
+        </p>
+    </div>
+
+    <button onclick="completeOrder()">Siparişi Onayla</button>
+
+</div>
+
+<script>
+function completeOrder() {
+    alert("Siparişiniz başarıyla alındı! Teşekkür ederiz.");
+    window.location.href = "sayfa2.html";
+}
+</script>
+
+</body>
+</html>

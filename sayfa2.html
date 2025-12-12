@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AYZ MOTORS - Arama Sonuçları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "primary-dark": "#0d5da8",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased flex flex-col min-h-screen">
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-[#1a2634] border-b border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="px-4 md:px-10 lg:px-40 py-3">
+<div class="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2 md:gap-4">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">AYZ MOTORS</h2>
+</div>
+<div class="hidden md:flex flex-1 max-w-xl px-8">
+<div class="flex w-full items-stretch rounded-lg h-10 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 overflow-hidden focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent transition-all">
+<div class="flex items-center justify-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input id="search-input-desktop" class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-0 px-3" placeholder="Parça adı, OEM kodu veya marka arayın..." value="Fren Balatası"/>
+<button onclick="performSearch('desktop')" class="bg-primary hover:bg-primary-dark text-white px-4 text-sm font-medium transition-colors">
+                            Ara
+                        </button>
+</div>
+</div>
+<div class="flex items-center gap-4 md:gap-8">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Anasayfa</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Yedek Parça</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Aksesuar</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">İletişim</a>
+</nav>
+<div class="flex items-center gap-3">
+<button onclick="goToCart()" class="flex items-center justify-center size-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+</button>
+<button onclick="goToAccount()" class="flex items-center justify-center size-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[22px]">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+<div class="md:hidden mt-3">
+<div class="flex w-full items-stretch rounded-lg h-10 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 overflow-hidden">
+<div class="flex items-center justify-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input id="search-input-mobile" class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-0 px-3" placeholder="Ara..." value="Fren Balatası"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow px-4 md:px-10 lg:px-40 py-6">
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8">
+<aside class="w-full lg:w-64 flex-shrink-0 flex flex-col gap-6">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Filtreler</h3>
+<button onclick="clearFilters()" class="text-sm text-primary font-medium hover:underline">Temizle</button>
+</div>
+<div class="bg-white dark:bg-[#1a2634] p-4 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-sm font-semibold mb-4 text-slate-800 dark:text-slate-200">Fiyat Aralığı</p>
+<div class="flex items-center gap-2 mb-4">
+<input class="w-20 p-1 text-sm border rounded bg-slate-50 dark:bg-slate-700 dark:border-slate-600" type="number" value="100"/>
+<span class="text-slate-400">-</span>
+<input class="w-20 p-1 text-sm border rounded bg-slate-50 dark:bg-slate-700 dark:border-slate-600" type="number" value="5000"/>
+<span class="text-xs text-slate-500">TL</span>
+</div>
+<div class="relative h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full mt-2">
+<div class="absolute left-[10%] right-[30%] h-full bg-primary rounded-full"></div>
+<div class="absolute left-[10%] top-1/2 -translate-y-1/2 size-4 bg-white border-2 border-primary rounded-full cursor-pointer hover:scale-110 transition-transform shadow-sm"></div>
+<div class="absolute right-[30%] top-1/2 -translate-y-1/2 size-4 bg-white border-2 border-primary rounded-full cursor-pointer hover:scale-110 transition-transform shadow-sm"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<details class="group rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2634] shadow-sm" open="">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Kategori</span>
+<span class="material-symbols-outlined text-slate-500 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0 flex flex-col gap-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Fren Sistemi (86)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Motor Parçaları (24)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Filtreler (14)</span>
+</label>
+</div>
+</details>
+<details class="group rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2634] shadow-sm" open="">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Marka</span>
+<span class="material-symbols-outlined text-slate-500 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0 flex flex-col gap-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Bosch (42)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Valeo (30)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">TRW (15)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Maysan Mando (8)</span>
+</label>
+</div>
+</details>
+<details class="group rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2634] shadow-sm">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Araç Uyumluluğu</span>
+<span class="material-symbols-outlined text-slate-500 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0 text-sm text-slate-500">
+                                Model seçimi yapınız...
+                            </div>
+</details>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col">
+<div class="mb-6 flex flex-wrap gap-2 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Anasayfa</a>
+<span class="text-slate-400">/</span>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Yedek Parça</a>
+<span class="text-slate-400">/</span>
+<span class="text-slate-900 dark:text-white font-medium">Arama Sonuçları</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">"Fren Balatası"</h1>
+<p class="text-slate-500 dark:text-slate-400">124 sonuç bulundu</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm text-slate-500 hidden sm:inline">Sıralama:</span>
+<select onchange="sortResults(this.value)" class="form-select bg-white dark:bg-[#1a2634] border border-slate-300 dark:border-slate-700 rounded-md text-sm py-2 pl-3 pr-8 focus:ring-primary focus:border-primary cursor-pointer text-slate-700 dark:text-slate-200">
+<option value="recommended">Önerilen Sıralama</option>
+<option value="price-asc">Fiyat: Artan</option>
+<option value="price-desc">Fiyat: Azalan</option>
+<option value="newest">En Yeniler</option>
+</select>
+<div class="hidden sm:flex border border-slate-300 dark:border-slate-700 rounded-md overflow-hidden">
+<button onclick="changeView('grid')" class="p-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-primary">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button onclick="changeView('list')" class="p-2 bg-white dark:bg-[#1a2634] hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group flex flex-col bg-white dark:bg-[#1a2634] rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative">
+<div class="absolute top-3 left-3 z-10 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">
+                            Çok Satan
+                        </div>
+<div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+<img alt="Shiny metallic brake disc and red caliper" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-500" data-alt="Shiny metallic brake disc and red caliper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhyVRZRp4AvaTooFQt0lA0cLJYtzsDBldHHBW0SJA2qjLyYZHpFUy6d0_NU6KY44Gxfru-Wcxal9RuW2p8Z2U7qqSzsR1-2mNIN90ZyCq3jZ9KtnV4h_1Z-yesB2CNZQwE-AW-8qucxX-U2UW96jC4G-RHHc-mhqAM49JQRAbb3X-xV7Y3g6moHpMG-too_nBU1jAyQoVjO7lb0RhlLaEEhvbEN4yHL1TEcfZXYYY3uzCuWV6nxVoyOMeYC8A4J-I4MnS2FiQODdXF"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="mb-2">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">OEM: 5Q0698151</p>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+                                    Volkswagen Golf 7 Ön Fren Balatası Takımı
+                                </h3>
+</div>
+<div class="flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-slate-300 text-[16px]">star</span>
+<span class="text-xs text-slate-400 ml-1">(42)</span>
+</div>
+<div class="mt-auto flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xs text-slate-400 line-through">1.200 TL</span>
+<span class="text-xl font-bold text-primary">850.00 TL</span>
+</div>
+<button onclick="addToCart('5Q0698151', 'Volkswagen Golf 7 Ön Fren Balatası Takımı')" class="flex items-center justify-center rounded bg-primary/10 hover:bg-primary text-primary hover:text-white p-2.5 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2634] rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative">
+<div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+<img alt="Close up of car headlight assembly" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-500" data-alt="Close up of car headlight assembly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmv9JfjbfFCltQgqxjvcyPsn_Boyv4Sfefi5ZUSEtidHtVPHZ8XvdBfROkmto2FfNRZkwqI1BV5hkgfqjz39zX_XY_AAEudV5CAFszYygvHcwF0nwbG7UvgfCet8E8bzbMhLIgMkTHEpISCVMZcnBtwYu2Oi0n0EpZ5Ptuh70sY8rvR5hrmvv8SMYXflcGUiLhDNizExbPgEn0gNDDj8vTSKJ8P03d6WFYNw68SGIo8yjvjk8QVDTeoqXT9hjxP_TdsmAEQxUQT0z1"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="mb-2">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">OEM: 1K0698451G</p>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+                                    Bosch Arka Fren Balatası - Audi A3 / VW Golf
+                                </h3>
+</div>
+<div class="flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="text-xs text-slate-400 ml-1">(18)</span>
+</div>
+<div class="mt-auto flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-primary">620.50 TL</span>
+</div>
+<button onclick="addToCart('1K0698451G', 'Bosch Arka Fren Balatası')" class="flex items-center justify-center rounded bg-primary/10 hover:bg-primary text-primary hover:text-white p-2.5 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2634] rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative">
+<div class="absolute top-3 left-3 z-10 bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">
+                            Kampanya
+                        </div>
+<div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+<img alt="Automotive oil filter on white background" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-500" data-alt="Automotive oil filter on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDciGGG9r1Ik1oM2TXRtEUpf8lPwugyww90TdxaHi_zQ92DvuChznsizlEOb3jl9IalUMBbz4bX6Sn-XG47G1KAyQkmZCo_Qd0V6wxsa0JbPwOW6lVJVLIdZpTMJWBQy_iCzgRxL8vJTB-lH5gJTpxPyEQNU-Y3JYaz0jZo1K3cDDbUMf0n3fZgVQ21ypo4neQ6dw4rAQDFNyPXbEloeR18p1OX83xutlWWNA8W-VeYEExvDy1J9QvjLhPfH30i-HaVxfYR-UVtOYj2"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="mb-2">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">OEM: 06L115562B</p>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+                                    Mann-Filter Yağ Filtresi HU 6013 z
+                                </h3>
+</div>
+<div class="flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-slate-300 text-[16px]">star</span>
+<span class="material-symbols-outlined text-slate-300 text-[16px]">star</span>
+<span class="text-xs text-slate-400 ml-1">(5)</span>
+</div>
+<div class="mt-auto flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xs text-slate-400 line-through">450 TL</span>
+<span class="text-xl font-bold text-primary">385.00 TL</span>
+</div>
+<button onclick="addToCart('06L115562B', 'Mann-Filter Yağ Filtresi')" class="flex items-center justify-center rounded bg-primary/10 hover:bg-primary text-primary hover:text-white p-2.5 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2634] rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative">
+<div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+<img alt="Car engine piston close up" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-500" data-alt="Car engine piston close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRnJ4JbaLLvOWsQr5Bb1gNSNm7MlO0XlGn2c1oaQnbo8JRqz6bDZ9z7oq7KS0ewMnAa7lrIhri-RwenJHatRwclcBabnPbnKAFJAWyl_HEf16w4uaSrsRaCPzkoBmeBYir71JRagWLWfvZtKG0DpC5wAVOBuTLQTWotXbgDF1AKnfz-AqFKlRv6kBj2Sn_AitC3NOEnmUnQMV3Cc01GfX8dDeNxNu7dsWFWtCIJsb0ravbkIZjjgbrGw-0kfS8rX2x8YEiQGY5n_4K"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="mb-2">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">OEM: GDB1307</p>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+                                    TRW Fren Balatası Seti - Ford Focus III
+                                </h3>
+</div>
+<div class="flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-slate-300 text-[16px]">star</span>
+<span class="text-xs text-slate-400 ml-1">(27)</span>
+</div>
+<div class="mt-auto flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-primary">540.00 TL</span>
+</div>
+<button onclick="addToCart('GDB1307', 'TRW Fren Balatası Seti')" class="flex items-center justify-center rounded bg-primary/10 hover:bg-primary text-primary hover:text-white p-2.5 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2634] rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative opacity-75">
+<div class="absolute inset-0 bg-white/50 dark:bg-black/50 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="bg-slate-800 text-white px-3 py-1 rounded text-sm font-medium">Stokta Yok</span>
+</div>
+<div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+<img alt="New car spark plug on dark background" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-500" data-alt="New car spark plug on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxWGq5l7LOYZ84Z8oW2lCM6CVNYA_mEWVvMzPB34F-EtYwbSKcW8vUAQlWaNNFcooXUVE5kJ7o5rwJ1iYByTVUMD-wdn4c_XanM4kSqfB03sG8dIVipBspNlPXslX3ZBghwAa4VPjRmPHtQOm1KNENb8VsF_M3zYoHWxS7rSrnDkArQ1KyM40Wx9cA5pXx74OW-orfuHKi_j0DJFg9XCDc1JFLyIA5kS7MXnofMQ2kDlKFQvVdX424Rioy01bO1XPKapTzZZx10_G0"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="mb-2">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">OEM: 12290R40A02</p>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+                                    NGK İridyum Buji Takımı - Honda Civic FD6
+                                </h3>
+</div>
+<div class="flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="text-xs text-slate-400 ml-1">(120)</span>
+</div>
+<div class="mt-auto flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-primary">1.150 TL</span>
+</div>
+<button onclick="notifyOutOfStock('12290R40A02')" class="flex items-center justify-center rounded bg-slate-100 text-slate-400 p-2.5 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2634] rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative">
+<div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+<img alt="Car battery isolated on white" class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-500" data-alt="Car battery isolated on white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjsgstVbigeEbH2Olx0IVDbX_J1hQpnY7XEZbfLRdTzKfSeKUwjosOi2B7O2yaIQQ8YqRF9mL8QJ4Il02P2wlPcmnpRrHgialaC4xkIuLtI0uKYWEGtgnIyWSCOBBckx3Xd-0cpdSN-4Vlp_jh2Rvuw8vTrdFAlAvRWz18WKeQMDxs_dLF16euSI_UhUTPemp6TRAPX1qsXMjFuaQtR5SuIfxHvIWW39Q6yj-JKns2lqd1m4OBJi7nZeMYakQ0RSs_Jo0Ia5fLtQds"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="mb-2">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">OEM: 000915105DE</p>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+                                    Varta E39 70 Ah AGM Akü Start-Stop
+                                </h3>
+</div>
+<div class="flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-slate-300 text-[16px]">star</span>
+<span class="text-xs text-slate-400 ml-1">(85)</span>
+</div>
+<div class="mt-auto flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-primary">4.250 TL</span>
+</div>
+<button onclick="addToCart('000915105DE', 'Varta E39 70 Ah AGM Akü')" class="flex items-center justify-center rounded bg-primary/10 hover:bg-primary text-primary hover:text-white p-2.5 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10 flex justify-center">
+<nav class="flex items-center gap-2">
+<button onclick="goToPage('prev')" class="flex items-center justify-center size-9 rounded border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors disabled:opacity-50" disabled>
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button onclick="goToPage(1)" class="flex items-center justify-center size-9 rounded bg-primary text-white font-medium">1</button>
+<button onclick="goToPage(2)" class="flex items-center justify-center size-9 rounded border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-300">2</button>
+<button onclick="goToPage(3)" class="flex items-center justify-center size-9 rounded border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-300">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button onclick="goToPage(12)" class="flex items-center justify-center size-9 rounded border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-300">12</button>
+<button onclick="goToPage('next')" class="flex items-center justify-center size-9 rounded border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-[#1a2634] border-t border-slate-200 dark:border-slate-800 pt-12 pb-6">
+<div class="px-4 md:px-10 lg:px-40 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="col-span-1 md:col-span-1">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white mb-4">AYZ MOTORS</h2>
+<p class="text-slate-500 text-sm leading-relaxed">Orijinal yedek parça ve kaliteli yan sanayi ürünleri ile aracınızın ömrünü uzatın. Güvenli alışverişin adresi.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Hızlı Bağlantılar</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Anasayfa</a></li>
+<li><a class="hover:text-primary" href="#">Yedek Parça</a></li>
+<li><a class="hover:text-primary" href="#">Kampanyalar</a></li>
+<li><a class="hover:text-primary" href="#">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Müşteri Hizmetleri</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Sipariş Takibi</a></li>
+<li><a class="hover:text-primary" href="#">İade ve Değişim</a></li>
+<li><a class="hover:text-primary" href="#">Sıkça Sorulan Sorular</a></li>
+<li><a class="hover:text-primary" href="#">Gizlilik Politikası</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">İletişim</h4>
+<p class="text-sm text-slate-500 mb-2">info@ayzmotors.com</p>
+<p class="text-sm text-slate-500">+90 212 123 45 67</p>
+</div>
+</div>
+<div class="border-t border-slate-100 dark:border-slate-700 pt-6 text-center text-xs text-slate-400">
+                © 2023 AYZ MOTORS. Tüm hakları saklıdır.
+            </div>
+</div>
+</footer>
+
+<script>
+    // 1. Arama Fonksiyonu
+    function performSearch(source) {
+        let searchText = "";
+        if (source === 'desktop') {
+            searchText = document.getElementById('search-input-desktop').value;
+        } else if (source === 'mobile') {
+            searchText = document.getElementById('search-input-mobile').value;
+        } else {
+            // Mobile search input'unun değerini almak için ek kontrol
+            searchText = document.getElementById('search-input-mobile').value || document.getElementById('search-input-desktop').value;
+        }
+
+        if (searchText.trim() !== "") {
+            alert(`Arama yapılıyor: "${searchText.trim()}"`);
+            // Gerçek uygulamada: window.location.href = `/search?q=${encodeURIComponent(searchText)}`;
+        } else {
+            alert("Lütfen bir arama terimi giriniz.");
+        }
+    }
+
+    // 2. Sepete Ekle Fonksiyonu
+    function addToCart(oem, name) {
+        alert(`${name} (OEM: ${oem}) sepete eklendi!`);
+        // Gerçek uygulamada: Sepet API'sine POST isteği gönderilir ve sepet ikonu güncellenir.
+    }
+
+    // 3. Stokta Yok Butonu Fonksiyonu
+    function notifyOutOfStock(oem) {
+        // Bu buton zaten 'disabled' olduğu için direkt tıklanmaz, ancak burası olası bir event handler yeridir.
+        alert(`OEM: ${oem} kodlu ürün stokta yok. Geldiğinde haber ver seçeneği kaydedildi.`);
+    }
+
+    // 4. Diğer Navigasyon Fonksiyonları
+    function goToCart() {
+        alert("Alışveriş Sepeti sayfasına yönlendiriliyor...");
+    }
+
+    function goToAccount() {
+        alert("Hesabım / Giriş sayfasına yönlendiriliyor...");
+    }
+
+    // 5. Filtre Temizleme
+    function clearFilters() {
+        alert("Tüm filtreler temizlendi.");
+        // Gerçek uygulamada: Tüm filtre checkbox'ları işaretlenmemiş hale getirilir ve sayfa yeniden yüklenir.
+    }
+
+    // 6. Sıralama Fonksiyonu
+    function sortResults(sortValue) {
+        alert(`Sonuçlar şu şekilde sıralanacak: ${sortValue}`);
+        // Gerçek uygulamada: Sayfa, yeni sıralama parametresiyle yeniden yüklenir.
+    }
+
+    // 7. Görünüm Değiştirme Fonksiyonu
+    function changeView(viewType) {
+        alert(`Ürün görünümü "${viewType}" olarak değiştirildi.`);
+        // Gerçek uygulamada: Ürün grid'inin class'ları (grid-cols-X) değiştirilir.
+    }
+
+    // 8. Sayfalama Fonksiyonu
+    function goToPage(page) {
+        if (page === 'prev') {
+            alert("Önceki sayfaya gidiliyor.");
+        } else if (page === 'next') {
+            alert("Sonraki sayfaya gidiliyor.");
+        } else {
+            alert(`Sayfa ${page}'ye gidiliyor.`);
+        }
+        // Gerçek uygulamada: window.location.href = `/search?q=...&page=${page}`;
+    }
+</script>
+
+</body></html>

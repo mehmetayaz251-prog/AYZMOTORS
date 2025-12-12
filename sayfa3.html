@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giriş Yap</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+  </style>
+</head>
+
+<body class="h-screen overflow-hidden dark:bg-slate-900">
+  <div class="flex h-screen">
+    <div class="hidden lg:flex items-center justify-center bg-slate-900 dark:bg-slate-800 lg:w-1/2">
+      <div class="max-w-lg text-center px-6 py-12">
+        <h2 class="text-5xl font-extrabold text-white mb-4">
+          Araba Tutkunlarının Buluşma Noktası
+        </h2>
+        <p class="text-slate-300 text-lg leading-relaxed">
+          Hayalindeki araca sahip olmanın tam zamanı. Hemen giriş yap ve fırsatları kaçırma.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center lg:w-1/2 px-6 md:px-10">
+      <div class="w-full max-w-md bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg">
+        
+        <a href="sayfa1.html" class="text-sm text-blue-500 hover:underline block mb-3">← Sayfa 1'e Dön</a>
+
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 text-center">
+          AYZ MOTORS'a Hoş Geldiniz
+        </h1>
+        <p class="text-slate-600 dark:text-slate-300 text-center mb-6">
+          Hesabınıza giriş yapın ve sürpriz fırsatları yakalayın.
+        </p>
+
+        <form class="space-y-5">
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+            <input type="email" required
+              class="w-full px-4 py-2 border rounded-lg bg-slate-100 dark:bg-slate-700 dark:text-white outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+
+          <!-- Şifre -->
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Şifre</label>
+            <div class="relative">
+              <input id="password" type="password" required
+                class="w-full px-4 py-2 border rounded-lg bg-slate-100 dark:bg-slate-700 dark:text-white outline-none focus:ring-2 focus:ring-blue-500">
+
+              <span onclick="togglePassword()"
+                class="absolute right-3 top-2.5 cursor-pointer text-slate-500 dark:text-slate-300">
+                👁️
+              </span>
+            </div>
+          </div>
+
+          <!-- Giriş Yap -->
+          <button type="button" onclick="login()"
+            class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition">
+            Giriş Yap
+          </button>
+
+        </form>
+
+        <!-- OR -->
+        <div class="flex items-center my-6">
+          <hr class="flex-grow border-slate-300 dark:border-slate-700">
+          <span class="mx-4 text-slate-600 dark:text-slate-300">veya</span>
+          <hr class="flex-grow border-slate-300 dark:border-slate-700">
+        </div>
+
+        <!-- Google -->
+        <button onclick="googleLogin()"
+          class="w-full py-2 mb-3 bg-white border rounded-lg shadow-sm flex items-center justify-center gap-3 hover:bg-slate-100 transition">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+          Google ile Giriş Yap
+        </button>
+
+        <!-- Facebook -->
+        <button onclick="facebookLogin()"
+          class="w-full py-2 bg-blue-700 text-white rounded-lg flex items-center justify-center gap-3 hover:bg-blue-800 transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" width="20">
+          Facebook ile Giriş Yap
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Şifre Göster / Gizle
+    function togglePassword() {
+      const pass = document.getElementById("password");
+      pass.type = pass.type === "password" ? "text" : "password";
+    }
+
+    // Normal giriş
+    function login() {
+      alert("Giriş başarılı! (Ödev için simülasyon)");
+      window.location.href = "sayfa1.html";
+    }
+
+    // Google
+    function googleLogin() {
+      alert("Google giriş sistemi ödev için simüle edildi.");
+    }
+
+    // Facebook
+    function facebookLogin() {
+      alert("Facebook giriş sistemi ödev için simüle edildi.");
+    }
+  </script>
+
+</body>
+</html>
